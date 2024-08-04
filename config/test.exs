@@ -5,20 +5,20 @@ import Config
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
-config :particle, Particle.Repo,
-  database: Path.expand("../particle_test.db", __DIR__),
+config :creative, Creative.Repo,
+  database: Path.expand("../creative_test.db", __DIR__),
   pool_size: 5,
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :particle, ParticleWeb.Endpoint,
+config :creative, CreativeWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "gWgUvVv1XgDssU0eseWMubz5CPDbaIUZIVmQdp6WuR9+OPaKmJ6eynqeTjMUaxCb",
   server: false
 
 # In test we don't send emails.
-config :particle, Particle.Mailer, adapter: Swoosh.Adapters.Test
+config :creative, Creative.Mailer, adapter: Swoosh.Adapters.Test
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false

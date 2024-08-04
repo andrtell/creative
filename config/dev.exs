@@ -1,8 +1,8 @@
 import Config
 
 # Configure your database
-config :particle, Particle.Repo,
-  database: Path.expand("../particle_dev.db", __DIR__),
+config :creative, Creative.Repo,
+  database: Path.expand("../creative_dev.db", __DIR__),
   pool_size: 5,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true
@@ -13,7 +13,7 @@ config :particle, Particle.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :particle, ParticleWeb.Endpoint,
+config :creative, CreativeWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
@@ -22,7 +22,7 @@ config :particle, ParticleWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "M+As32k30U2FeanK95hyVZd6f94HRpTCHoHORzoOr7GacVV5J5eqFmQmDvAE30WV",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:particle, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:creative, ~w(--sourcemap=inline --watch)]}
   ]
 
 # ## SSL Support
@@ -49,17 +49,17 @@ config :particle, ParticleWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :particle, ParticleWeb.Endpoint,
+config :creative, CreativeWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/particle_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/creative_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :particle, dev_routes: true
+config :creative, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

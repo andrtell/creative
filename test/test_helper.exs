@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(Particle.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(Creative.Repo, :manual)

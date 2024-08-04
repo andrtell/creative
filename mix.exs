@@ -1,9 +1,9 @@
-defmodule Particle.MixProject do
+defmodule Creative.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :particle,
+      app: :creative,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -18,7 +18,7 @@ defmodule Particle.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Particle.Application, []},
+      mod: {Creative.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -66,9 +66,9 @@ defmodule Particle.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["esbuild.install --if-missing"],
-      "assets.build": ["esbuild particle"],
+      "assets.build": ["esbuild creative"],
       "assets.deploy": [
-        "esbuild particle --minify",
+        "esbuild creative --minify",
         "phx.digest"
       ]
     ]

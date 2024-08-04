@@ -7,19 +7,19 @@
 # General application configuration
 import Config
 
-config :particle,
-  ecto_repos: [Particle.Repo],
+config :creative,
+  ecto_repos: [Creative.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :particle, ParticleWeb.Endpoint,
+config :creative, CreativeWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: ParticleWeb.ErrorHTML, json: ParticleWeb.ErrorJSON],
+    formats: [html: CreativeWeb.ErrorHTML, json: CreativeWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: Particle.PubSub,
+  pubsub_server: Creative.PubSub,
   live_view: [signing_salt: "j3G9onvK"]
 
 # Configures the mailer
@@ -29,14 +29,18 @@ config :particle, ParticleWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :particle, Particle.Mailer, adapter: Swoosh.Adapters.Local
+config :creative, Creative.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
-  particle: [
+  creative: [
     args:
-      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+      ~w(
+      js/page/page_polygon.js 
+      js/page/page_noise.js 
+      js/page/page_hull.js 
+      js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
